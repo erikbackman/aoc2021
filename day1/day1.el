@@ -14,13 +14,22 @@
 	  (forward-line 1))))
     (nreverse data)))
 
+(defun parse (input)
+  (-map #'string-to-number input))
+
 (defun compare (pair)
   (if (< (-first-item pair) (-last-item pair)) 1 0))
 
 (defun solve-p1 (data)
-  (--> (-map #'string-to-number data)
-       (-partition-in-steps 2 1 it)
+  (--> (-partition-in-steps 2 1 data)
        (-map #'compare it)
        (-sum it)))
 
-(solve-p1 (buffer-lines "*aoc-input*"))
+(solve-p1 (parse (buffer-lines "*aoc-input*")))
+
+(defun solve-p2 (data)
+  (--> (-partition-in-steps 3 1 data)
+       (-map #'-sum it)
+       (solve-p1 it)))
+
+(solve-p2 (parse (buffer-lines "*aoc-input*")))
