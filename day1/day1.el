@@ -3,8 +3,8 @@
 (defun buffer-lines (buffer)
   (let ((data))
     (save-excursion
-      (goto-char (point-min))
       (with-current-buffer buffer
+	(goto-char (point-min))
 	(while (not (eobp))
 	  (push
 	   (buffer-substring-no-properties
