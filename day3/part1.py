@@ -6,7 +6,7 @@ gamma = ""
 epsilon = ""
 for col in range(n_cols):
     col_sum = sum([int(line[col]) for line in lines])
-    if col_sum < int(n_rows/2):
+    if col_sum*1.0 < n_rows/2:
         gamma += "0"
         epsilon += "1"
     else:
