@@ -1,4 +1,3 @@
-BEGIN { h = 0; d = 0; }
 {
     if ($1 == "forward") { h+=$2 }
     else if ($1 == "down") { d+=$2 }
